@@ -1,0 +1,1567 @@
+#! C:/Program Files/Nuke12.1v4/nuke-12.1.4.dll -nx
+version 12.1 v4
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1919" h="1004" screen="0">
+        <splitter orientation="1">
+            <split size="42"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1254" stretch="1"/>
+            <splitter orientation="2">
+                <split size="565"/>
+                <dock id="" activePageId="Viewer.2">
+                    <page id="Viewer.1"/>
+                    <page id="Viewer.2"/>
+                </dock>
+                <split size="397"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                <page id="uk.co.thefoundry.scripteditor.2"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name C:/Users/rober/dev/ScanlineDemo/knobs.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ name Viewer1
+ xpos -405
+ ypos -79
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ name Viewer2
+ xpos -62
+ ypos -169
+}
+Grade {
+ inputs 0
+ name Grade1
+ xpos -213
+ ypos -603
+}
+Grade {
+ inputs 0
+ name Grade2
+ xpos 294
+ ypos -451
+}
+Grade {
+ name Grade3
+ xpos 294
+ ypos -427
+}
+Grade {
+ name Grade4
+ xpos 294
+ ypos -403
+}
+Grade {
+ inputs 0
+ name Grade5
+ xpos 1408
+ ypos -421
+}
+Grade {
+ name Grade6
+ xpos 1408
+ ypos -397
+}
+Grade {
+ name Grade7
+ xpos 1408
+ ypos -373
+}
+Grade {
+ inputs 0
+ name Grade8
+ xpos -555
+ ypos -451
+}
+Grade {
+ inputs 0
+ name Grade9
+ xpos -885
+ ypos -283
+}
+Grade {
+ inputs 0
+ name Grade10
+ xpos -1184
+ ypos -364
+}
+Grade {
+ name Grade11
+ xpos -1184
+ ypos -340
+}
+Grade {
+ inputs 0
+ name Grade12
+ xpos -1154
+ ypos -270
+}
+Grade {
+ name Grade13
+ xpos -1154
+ ypos -246
+}
+Grade {
+ inputs 0
+ name Grade14
+ xpos -966
+ ypos -226
+}
+Grade {
+ name Grade15
+ xpos -966
+ ypos -202
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur1
+ label testing
+ xpos 533
+ ypos -239
+}
+Blur {
+ size {1 0}
+ name Blur2
+ label testing
+ xpos 533
+ ypos -203
+}
+Blur {
+ size {1 0}
+ name Blur3
+ label testing
+ xpos 533
+ ypos -179
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur4
+ label testing
+ xpos 1055
+ ypos -502
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur5
+ label testing
+ xpos 967
+ ypos -552
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur6
+ label testing
+ xpos -102
+ ypos -603
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur7
+ label testing
+ xpos -838
+ ypos -535
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur8
+ label testing
+ xpos -973
+ ypos -350
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur11
+ label testing
+ xpos -35
+ ypos 18
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur12
+ label testing
+ xpos 365
+ ypos 35
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur13
+ label testing
+ xpos 843
+ ypos 29
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur14
+ label testing
+ xpos 1182
+ ypos -35
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur15
+ label testing
+ xpos 1236
+ ypos -303
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur16
+ label testing
+ xpos 708
+ ypos -394
+}
+Axis2 {
+ inputs 0
+ name Axis1
+ xpos 748
+ ypos -572
+}
+Axis2 {
+ inputs 0
+ name Axis2
+ xpos -2227
+ ypos -387
+}
+Axis2 {
+ inputs 0
+ name Axis3
+ xpos -3026
+ ypos 525
+}
+Axis2 {
+ inputs 0
+ name Axis4
+ xpos -1048
+ ypos 477
+}
+Axis2 {
+ inputs 0
+ name Axis6
+ xpos -135
+ ypos -939
+}
+Axis2 {
+ inputs 0
+ name Axis5
+ xpos 1929
+ ypos 392
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ name Viewer3
+ xpos -3848
+ ypos 3342
+}
+Grade {
+ inputs 0
+ name Grade16
+ xpos -3999
+ ypos 2908
+}
+Grade {
+ inputs 0
+ name Grade17
+ xpos -3492
+ ypos 3060
+}
+Grade {
+ name Grade18
+ xpos -3492
+ ypos 3084
+}
+Grade {
+ name Grade19
+ xpos -3492
+ ypos 3108
+}
+Grade {
+ inputs 0
+ name Grade20
+ xpos -2378
+ ypos 3090
+}
+Grade {
+ name Grade21
+ xpos -2378
+ ypos 3114
+}
+Grade {
+ name Grade22
+ xpos -2378
+ ypos 3138
+}
+Grade {
+ inputs 0
+ name Grade23
+ xpos -4341
+ ypos 3060
+}
+Grade {
+ inputs 0
+ name Grade24
+ xpos -4671
+ ypos 3228
+}
+Grade {
+ inputs 0
+ name Grade25
+ xpos -4970
+ ypos 3147
+}
+Grade {
+ name Grade26
+ xpos -4970
+ ypos 3171
+}
+Grade {
+ inputs 0
+ name Grade27
+ xpos -4940
+ ypos 3241
+}
+Grade {
+ name Grade28
+ xpos -4940
+ ypos 3265
+}
+Grade {
+ inputs 0
+ name Grade29
+ xpos -4752
+ ypos 3285
+}
+Grade {
+ name Grade30
+ xpos -4752
+ ypos 3309
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur17
+ label testing
+ xpos -3253
+ ypos 3272
+}
+Blur {
+ size {1 0}
+ name Blur18
+ label testing
+ xpos -3253
+ ypos 3308
+}
+Blur {
+ size {1 0}
+ name Blur19
+ label testing
+ xpos -3253
+ ypos 3332
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur20
+ label testing
+ xpos -2731
+ ypos 3009
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur21
+ label testing
+ xpos -2819
+ ypos 2959
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur22
+ label testing
+ xpos -3888
+ ypos 2908
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur23
+ label testing
+ xpos -4624
+ ypos 2976
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur24
+ label testing
+ xpos -4759
+ ypos 3161
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur25
+ label testing
+ xpos -4580
+ ypos 3332
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur26
+ label testing
+ xpos -4301
+ ypos 3442
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur27
+ label testing
+ xpos -3821
+ ypos 3529
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur28
+ label testing
+ xpos -3421
+ ypos 3546
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur29
+ label testing
+ xpos -2943
+ ypos 3540
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur30
+ label testing
+ xpos -2604
+ ypos 3476
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur31
+ label testing
+ xpos -2550
+ ypos 3208
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur32
+ label testing
+ xpos -3078
+ ypos 3117
+}
+Axis2 {
+ inputs 0
+ name Axis7
+ xpos -3038
+ ypos 2939
+}
+Axis2 {
+ inputs 0
+ name Axis8
+ xpos -6013
+ ypos 3124
+}
+Axis2 {
+ inputs 0
+ name Axis9
+ xpos -6812
+ ypos 4036
+}
+Axis2 {
+ inputs 0
+ name Axis10
+ xpos -4834
+ ypos 3988
+}
+Axis2 {
+ inputs 0
+ name Axis11
+ xpos -3921
+ ypos 2572
+}
+Axis2 {
+ inputs 0
+ name Axis12
+ xpos -1857
+ ypos 3903
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ name Viewer4
+ xpos -8665
+ ypos 1001
+}
+Grade {
+ inputs 0
+ name Grade31
+ xpos -8816
+ ypos 567
+}
+Grade {
+ inputs 0
+ name Grade32
+ xpos -8309
+ ypos 719
+}
+Grade {
+ name Grade33
+ xpos -8309
+ ypos 743
+}
+Grade {
+ name Grade34
+ xpos -8309
+ ypos 767
+}
+Grade {
+ inputs 0
+ name Grade35
+ xpos -7195
+ ypos 749
+}
+Grade {
+ name Grade36
+ xpos -7195
+ ypos 773
+}
+Grade {
+ name Grade37
+ xpos -7195
+ ypos 797
+}
+Grade {
+ inputs 0
+ name Grade38
+ xpos -9158
+ ypos 719
+}
+Grade {
+ inputs 0
+ name Grade39
+ xpos -9488
+ ypos 887
+}
+Grade {
+ inputs 0
+ name Grade40
+ xpos -9787
+ ypos 806
+}
+Grade {
+ name Grade41
+ xpos -9787
+ ypos 830
+}
+Grade {
+ inputs 0
+ name Grade42
+ xpos -9757
+ ypos 900
+}
+Grade {
+ name Grade43
+ xpos -9757
+ ypos 924
+}
+Grade {
+ inputs 0
+ name Grade44
+ xpos -9569
+ ypos 944
+}
+Grade {
+ name Grade45
+ xpos -9569
+ ypos 968
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur33
+ label testing
+ xpos -8070
+ ypos 931
+}
+Blur {
+ size {1 0}
+ name Blur34
+ label testing
+ xpos -8070
+ ypos 967
+}
+Blur {
+ size {1 0}
+ name Blur35
+ label testing
+ xpos -8070
+ ypos 991
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur36
+ label testing
+ xpos -7548
+ ypos 668
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur37
+ label testing
+ xpos -7636
+ ypos 618
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur38
+ label testing
+ xpos -8705
+ ypos 567
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur39
+ label testing
+ xpos -9441
+ ypos 635
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur40
+ label testing
+ xpos -9576
+ ypos 820
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur41
+ label testing
+ xpos -9397
+ ypos 991
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur42
+ label testing
+ xpos -9118
+ ypos 1101
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur43
+ label testing
+ xpos -8638
+ ypos 1188
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur44
+ label testing
+ xpos -8238
+ ypos 1205
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur45
+ label testing
+ xpos -7760
+ ypos 1199
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur46
+ label testing
+ xpos -7421
+ ypos 1135
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur47
+ label testing
+ xpos -7367
+ ypos 867
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur48
+ label testing
+ xpos -7895
+ ypos 776
+}
+Axis2 {
+ inputs 0
+ name Axis13
+ xpos -7855
+ ypos 598
+}
+Axis2 {
+ inputs 0
+ name Axis14
+ xpos -10830
+ ypos 783
+}
+Axis2 {
+ inputs 0
+ name Axis15
+ xpos -11629
+ ypos 1695
+}
+Axis2 {
+ inputs 0
+ name Axis16
+ xpos -9651
+ ypos 1647
+}
+Axis2 {
+ inputs 0
+ name Axis17
+ xpos -8738
+ ypos 231
+}
+Axis2 {
+ inputs 0
+ name Axis18
+ xpos -6674
+ ypos 1562
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ name Viewer5
+ xpos 5300
+ ypos 1942
+}
+Grade {
+ inputs 0
+ name Grade46
+ xpos 5149
+ ypos 1508
+}
+Grade {
+ inputs 0
+ name Grade47
+ xpos 5656
+ ypos 1660
+}
+Grade {
+ name Grade48
+ xpos 5656
+ ypos 1684
+}
+Grade {
+ name Grade49
+ xpos 5656
+ ypos 1708
+}
+Grade {
+ inputs 0
+ name Grade50
+ xpos 6770
+ ypos 1690
+}
+Grade {
+ name Grade51
+ xpos 6770
+ ypos 1714
+}
+Grade {
+ name Grade52
+ xpos 6770
+ ypos 1738
+}
+Grade {
+ inputs 0
+ name Grade53
+ xpos 4807
+ ypos 1660
+}
+Grade {
+ inputs 0
+ name Grade54
+ xpos 4477
+ ypos 1828
+}
+Grade {
+ inputs 0
+ name Grade55
+ xpos 4178
+ ypos 1747
+}
+Grade {
+ name Grade56
+ xpos 4178
+ ypos 1771
+}
+Grade {
+ inputs 0
+ name Grade57
+ xpos 4208
+ ypos 1841
+}
+Grade {
+ name Grade58
+ xpos 4208
+ ypos 1865
+}
+Grade {
+ inputs 0
+ name Grade59
+ xpos 4396
+ ypos 1885
+}
+Grade {
+ name Grade60
+ xpos 4396
+ ypos 1909
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur49
+ label testing
+ xpos 5895
+ ypos 1872
+}
+Blur {
+ size {1 0}
+ name Blur50
+ label testing
+ xpos 5895
+ ypos 1908
+}
+Blur {
+ size {1 0}
+ name Blur51
+ label testing
+ xpos 5895
+ ypos 1932
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur52
+ label testing
+ xpos 6417
+ ypos 1609
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur53
+ label testing
+ xpos 6329
+ ypos 1559
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur54
+ label testing
+ xpos 5260
+ ypos 1508
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur55
+ label testing
+ xpos 4524
+ ypos 1576
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur56
+ label testing
+ xpos 4389
+ ypos 1761
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur57
+ label testing
+ xpos 4568
+ ypos 1932
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur58
+ label testing
+ xpos 4847
+ ypos 2042
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur59
+ label testing
+ xpos 5327
+ ypos 2129
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur60
+ label testing
+ xpos 5727
+ ypos 2146
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur61
+ label testing
+ xpos 6205
+ ypos 2140
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur62
+ label testing
+ xpos 6544
+ ypos 2076
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur63
+ label testing
+ xpos 6598
+ ypos 1808
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur64
+ label testing
+ xpos 6070
+ ypos 1717
+}
+Axis2 {
+ inputs 0
+ name Axis19
+ xpos 6110
+ ypos 1539
+}
+Axis2 {
+ inputs 0
+ name Axis20
+ xpos 3135
+ ypos 1724
+}
+Axis2 {
+ inputs 0
+ name Axis21
+ xpos 2336
+ ypos 2636
+}
+Axis2 {
+ inputs 0
+ name Axis22
+ xpos 4314
+ ypos 2588
+}
+Axis2 {
+ inputs 0
+ name Axis23
+ xpos 5227
+ ypos 1172
+}
+Axis2 {
+ inputs 0
+ name Axis24
+ xpos 7291
+ ypos 2503
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ name Viewer6
+ xpos 8932
+ ypos -694
+}
+Grade {
+ inputs 0
+ name Grade61
+ xpos 8781
+ ypos -1128
+}
+Grade {
+ inputs 0
+ name Grade62
+ xpos 9288
+ ypos -976
+}
+Grade {
+ name Grade63
+ xpos 9288
+ ypos -952
+}
+Grade {
+ name Grade64
+ xpos 9288
+ ypos -928
+}
+Grade {
+ inputs 0
+ name Grade65
+ xpos 10402
+ ypos -946
+}
+Grade {
+ name Grade66
+ xpos 10402
+ ypos -922
+}
+Grade {
+ name Grade67
+ xpos 10402
+ ypos -898
+}
+Grade {
+ inputs 0
+ name Grade68
+ xpos 8439
+ ypos -976
+}
+Grade {
+ inputs 0
+ name Grade69
+ xpos 8109
+ ypos -808
+}
+Grade {
+ inputs 0
+ name Grade70
+ xpos 7810
+ ypos -889
+}
+Grade {
+ name Grade71
+ xpos 7810
+ ypos -865
+}
+Grade {
+ inputs 0
+ name Grade72
+ xpos 7840
+ ypos -795
+}
+Grade {
+ name Grade73
+ xpos 7840
+ ypos -771
+}
+Grade {
+ inputs 0
+ name Grade74
+ xpos 8028
+ ypos -751
+}
+Grade {
+ name Grade75
+ xpos 8028
+ ypos -727
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur65
+ label testing
+ xpos 9527
+ ypos -764
+}
+Blur {
+ size {1 0}
+ name Blur66
+ label testing
+ xpos 9527
+ ypos -728
+}
+Blur {
+ size {1 0}
+ name Blur67
+ label testing
+ xpos 9527
+ ypos -704
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur68
+ label testing
+ xpos 10049
+ ypos -1027
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur69
+ label testing
+ xpos 9961
+ ypos -1077
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur70
+ label testing
+ xpos 8892
+ ypos -1128
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur71
+ label testing
+ xpos 8156
+ ypos -1060
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur72
+ label testing
+ xpos 8021
+ ypos -875
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur73
+ label testing
+ xpos 8200
+ ypos -704
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur74
+ label testing
+ xpos 8479
+ ypos -594
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur75
+ label testing
+ xpos 8959
+ ypos -507
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur76
+ label testing
+ xpos 9359
+ ypos -490
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur77
+ label testing
+ xpos 9837
+ ypos -496
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur78
+ label testing
+ xpos 10176
+ ypos -560
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur79
+ label testing
+ xpos 10230
+ ypos -828
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur80
+ label testing
+ xpos 9702
+ ypos -919
+}
+Axis2 {
+ inputs 0
+ name Axis25
+ xpos 9742
+ ypos -1097
+}
+Axis2 {
+ inputs 0
+ name Axis26
+ xpos 6767
+ ypos -912
+}
+Axis2 {
+ inputs 0
+ name Axis27
+ xpos 5968
+}
+Axis2 {
+ inputs 0
+ name Axis28
+ xpos 7946
+ ypos -48
+}
+Axis2 {
+ inputs 0
+ name Axis29
+ xpos 8859
+ ypos -1464
+}
+Axis2 {
+ inputs 0
+ name Axis30
+ xpos 10923
+ ypos -133
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ name Viewer7
+ xpos -3391
+ ypos 1350
+}
+Grade {
+ inputs 0
+ name Grade76
+ xpos -3542
+ ypos 916
+}
+Grade {
+ inputs 0
+ name Grade77
+ xpos -3035
+ ypos 1068
+}
+Grade {
+ name Grade78
+ xpos -3035
+ ypos 1092
+}
+Grade {
+ name Grade79
+ xpos -3035
+ ypos 1116
+}
+Grade {
+ inputs 0
+ name Grade80
+ xpos -1921
+ ypos 1098
+}
+Grade {
+ name Grade81
+ xpos -1921
+ ypos 1122
+}
+Grade {
+ name Grade82
+ xpos -1921
+ ypos 1146
+}
+Grade {
+ inputs 0
+ name Grade83
+ xpos -3884
+ ypos 1068
+}
+Grade {
+ inputs 0
+ name Grade84
+ xpos -4214
+ ypos 1236
+}
+Grade {
+ inputs 0
+ name Grade85
+ xpos -4513
+ ypos 1155
+}
+Grade {
+ name Grade86
+ xpos -4513
+ ypos 1179
+}
+Grade {
+ inputs 0
+ name Grade87
+ xpos -4483
+ ypos 1249
+}
+Grade {
+ name Grade88
+ xpos -4483
+ ypos 1273
+}
+Grade {
+ inputs 0
+ name Grade89
+ xpos -4295
+ ypos 1293
+}
+Grade {
+ name Grade90
+ xpos -4295
+ ypos 1317
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur81
+ label testing
+ xpos -2796
+ ypos 1280
+}
+Blur {
+ size {1 0}
+ name Blur82
+ label testing
+ xpos -2796
+ ypos 1316
+}
+Blur {
+ size {1 0}
+ name Blur83
+ label testing
+ xpos -2796
+ ypos 1340
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur84
+ label testing
+ xpos -2274
+ ypos 1017
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur85
+ label testing
+ xpos -2362
+ ypos 967
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur86
+ label testing
+ xpos -3431
+ ypos 916
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur87
+ label testing
+ xpos -4167
+ ypos 984
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur88
+ label testing
+ xpos -4302
+ ypos 1169
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur89
+ label testing
+ xpos -4123
+ ypos 1340
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur90
+ label testing
+ xpos -3844
+ ypos 1450
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur91
+ label testing
+ xpos -3364
+ ypos 1537
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur92
+ label testing
+ xpos -2964
+ ypos 1554
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur93
+ label testing
+ xpos -2486
+ ypos 1548
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur94
+ label testing
+ xpos -2147
+ ypos 1484
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur95
+ label testing
+ xpos -2093
+ ypos 1216
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur96
+ label testing
+ xpos -2621
+ ypos 1125
+}
+Axis2 {
+ inputs 0
+ name Axis31
+ xpos -2581
+ ypos 947
+}
+Axis2 {
+ inputs 0
+ name Axis32
+ xpos -5556
+ ypos 1132
+}
+Axis2 {
+ inputs 0
+ name Axis33
+ xpos -6355
+ ypos 2044
+}
+Axis2 {
+ inputs 0
+ name Axis34
+ xpos -4377
+ ypos 1996
+}
+Axis2 {
+ inputs 0
+ name Axis35
+ xpos -3464
+ ypos 580
+}
+Axis2 {
+ inputs 0
+ name Axis36
+ xpos -1400
+ ypos 1911
+}
+Blur {
+ inputs 0
+ size {1 1}
+ name Blur10
+ label testing
+ xpos -515
+ ypos -69
+}
+Blur {
+ inputs 0
+ size {1 0}
+ name Blur9
+ label testing
+ selected true
+ xpos -794
+ ypos -179
+}
