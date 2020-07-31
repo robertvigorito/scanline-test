@@ -1,4 +1,5 @@
 """
+Testing requirements
 1. Create a UI using QT that can be run in nuke:
 -This UI should gather all node classes that exist in a nukescript at launch time, and list them in a dropdown menu
 
