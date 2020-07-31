@@ -150,7 +150,8 @@ class GatherAndSet(QtWidgets.QDialog):
             "Enumeration_Knob": is_int_or_str,
             "Int_Knob": int,
             "Format_Knob": filter_format,
-            "Array_Knob": float
+            "Array_Knob": float,
+            "Disable_Knob": is_int,
         }
     __PATTERN = re.compile(r"[\w.]+")
 
@@ -283,7 +284,7 @@ class GatherAndSet(QtWidgets.QDialog):
 
             # Check if knob has an array
             if not hasattr(knob, "arraySize"):
-                knob.setValut(knob_type(self.value))
+                knob.setValue(knob_type(self.value))
                 continue
 
             array = knob.arraySize()

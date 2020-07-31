@@ -189,12 +189,11 @@ def test():
     """
     Providing a testing function, which will print the data required
     """
-    dirname = os.getenv("HOME") or r"C:\Users\rober"
+    dirname = os.getenv("HOME")
     dirname = os.path.join(dirname, "testing")
 
-    names = ["testing"] * 1000000
     names = find_all_knob_names()
-    text = write_to_text(names, dirname=dirname, basename="scanline-count.mov")
+    text = write_to_text(names, dirname=dirname, basename="scanline-test")
 
     for key, item in knob_name_count(text).iteritems():
         print key, item
