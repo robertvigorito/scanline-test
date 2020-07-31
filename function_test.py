@@ -1,25 +1,8 @@
 """
-1. Create a UI using QT that can be run in nuke:
--This UI should gather all node classes that exist in a nukescript at launch time, and list them in a dropdown menu - the first item, and default selected item should be empty at all times.
--When a class is selected in the above dropdown, another dropdowns hould be shown with all available knobs on that node class - again sorted.
--Under this there should be a simple text line where you can type a value, and a button that says 'Set'
-For whatever knob is selected in this second dropdown, when the user types something into the line and presses 'Set', you should attempt to set that knob on all nodes of the matching class to the users value
-
-2. Write a function that efficiently and safely does the following:
-- Gather all the knob names from all the nodes into a list.
-- With this list, write a string to a .txt file with each knob name separated by newlines. The name of this text file
-shouldnt be hardcoded, and should avoid over-writing other files in the directory it is written to.
-- In the most memory-efficient way, read the text file and store a count in any way you find efficient for how many times
-a knob name appears in the text file.
-- Write a separate function to safely delete all files created by the writing function, but no other files that may live
-in the directory.
-
-
-
 Gather and Count
 
 Gather all the knob name in the script, once the knob names are gathered add them to a .txt
-which is separated by a newline. A function is privided that will count how many times the name
+which is separated by a newline. A function is provided that will count how many times the name
 is listed in the file.
 
 Option is provided to clear out the txt files in a safe manner.

@@ -11,18 +11,19 @@ class - again sorted.
 For whatever knob is selected in this second dropdown, when the user types something into the line and presses 'Set', you
 should attempt to set that knob on all nodes of the matching class to the users value
 """
-import sys
 import nuke
 import re
 
-try:
-    from PySide import QtGui, QtCore
-    QtWidgets = QtGui
-except:
-    from PySide2 import QtGui, QtCore, QtWidgets
+from PySide2 import QtGui, QtCore, QtWidgets
 
 
 def all_classes():
+    """
+    Find all the class nodes in the script.
+
+    Returns:
+        (set) Sorted class names
+    """
     classes = set()
     for node in nuke.allNodes():
         classes.add(node.Class())
@@ -31,35 +32,34 @@ def all_classes():
 
 
 def all_class_knobs(cls):
+    """
+    Find all the knob name from the class name.
+
+    Args:
+        cls(str):       Class name
+
+    Returns:
+        (list) Sorted knob names
+    """
     for node in nuke.allNodes(cls):
         return sorted([name for name, item in node.knobs().items()])
 
     return []
 
 
-def is_int_or_str(attr):
-    """
-    Custom type check to see if the attribute is a string or int.
-
-    Args:
-        attr(str):      String type
-
-    Returns:
-        (int|str)
-    """
-    if attr.isdigit():
-        return int(attr)
-
-    return str(attr)
-
 def filter_format(attr):
     """
-    Find the format by int list
+    Validate the attribute, if int continue to index the list of formats.
+    When value 0 default to root format.
+
     Args:
-        attr:
+        attr(str):      Input value
+
+    Raises:
+        TypeError:      Provide int value
 
     Returns:
-
+        (str) Name from the nuke format
     """
     if not attr.isdigit():
         raise TypeError("Please provide an int value!")
@@ -69,6 +69,27 @@ def filter_format(attr):
 
     nuke_format = nuke.formats()[int(attr)-1]
     return nuke_format.name()
+
+
+def is_int_or_str(attr):
+    """
+    Custom type check to see if the attribute is a string or int.
+
+    Args:
+        attr(str):      String
+
+    Returns:
+        (int|str)
+    """
+    if attr.isdigit():
+        return int(attr)
+
+    return str(attr)
+
+
+def is_int(attr):
+    """ Validate if int, else return True. """
+    return int(attr) if attr.isdigit() else 1
 
 
 class CustomLineEdit(QtWidgets.QLineEdit):
@@ -85,7 +106,7 @@ class CustomLineEdit(QtWidgets.QLineEdit):
         Init constructor.
 
         Args:
-            populate(function):         Callable function that returns a list
+            populate(obj):         Callable function that returns a list
         """
         super(CustomLineEdit, self).__init__()
         self.populate = populate
@@ -114,15 +135,24 @@ class CustomLineEdit(QtWidgets.QLineEdit):
 
 
 class GatherAndSet(QtWidgets.QDialog):
+    """
+    Gather and set ui application. Find all the classes in the script
+    when the window is selected, update the list with sorted class names.
+    Once a class name is selected populate knob list with names attached.
+
+    Each knob type is validated and handled with a standard or custom type
+    operation. Which ensure a smooth artist experienc .
+    """
     __KNOB_TYPES = \
         {
-            "Boolean_Knob": int,
+            "Boolean_Knob": is_int,
             "ChannelMask_Knob": str,
             "Enumeration_Knob": is_int_or_str,
             "Int_Knob": int,
             "Format_Knob": filter_format,
+            "Array_Knob": float
         }
-    __PATTERN = re.compile(r"\w+")
+    __PATTERN = re.compile(r"[\w.]+")
 
     def __init__(self, parent=None):
         """
@@ -131,12 +161,11 @@ class GatherAndSet(QtWidgets.QDialog):
         Args:
             parent(object):        Parent QWidget, or app application
         """
-
         super(GatherAndSet, self).__init__(parent or QtWidgets.QApplication.activeWindow())
-        self.resize(350, 150)
-
+        self.setContentsMargins(*([5]*4))
         self.setLayout(self.master_layout())
         self.connection()
+        self.resize(500, 150)
 
     @property
     def classes(self):
@@ -178,7 +207,9 @@ class GatherAndSet(QtWidgets.QDialog):
         self.knob_dropdown.setPlaceholderText("Selected Class knob!")
 
         self.value_lineedit = QtWidgets.QLineEdit()
-        self.value_lineedit.setPlaceholderText("Add value or expression!")
+        self.value_lineedit.setPlaceholderText("Add value for set operation!")
+        self.value_lineedit.setToolTip("Insert value, for multiple inputs you can separated values with a space or ,\n"
+                                       "example: 1.2 .5 .7 1")
 
         layout = QtWidgets.QGridLayout()
         layout.addWidget(QtWidgets.QLabel("Class"), 0, 0)
@@ -192,7 +223,7 @@ class GatherAndSet(QtWidgets.QDialog):
 
     def button_layout(self):
         """
-        Creating the set, and closepush buttons, appending the button to the
+        Creating the set, and close push buttons, appending the button to the
         layout.
 
         Returns:
@@ -212,7 +243,7 @@ class GatherAndSet(QtWidgets.QDialog):
         Handling the signal connections for the ui.
         """
         self.close_button.pressed.connect(self.close)
-        self.set_button.pressed.connect(self.set_values)
+        self.set_button.pressed.connect(self.prepare_values)
 
         return None
 
@@ -225,13 +256,64 @@ class GatherAndSet(QtWidgets.QDialog):
         """
         layout = QtWidgets.QVBoxLayout()
 
+        horizon_line = QtWidgets.QFrame()
+        horizon_line.setFrameStyle(horizon_line.HLine)
+
         layout.addLayout(self.base_layout())
-        layout.addSpacing(30)
+        layout.addSpacing(15)
+        layout.addWidget(horizon_line)
+        layout.addSpacing(15)
         layout.addLayout(self.button_layout())
+        layout.addSpacing(10)
 
         return layout
 
-    def set_values(self):
+    def _update_knob_value(self):
+        """
+        Private method, loop through the class nodes, pass the value through
+        a custom type operation. Also verify the array count to ensure the
+        set operation is complete without error.
+
+        Raises:
+            TypeError:      Array doesnt match
+        """
+        for node in nuke.allNodes(self.class_name):
+            knob = node.knob(self.knob_name)
+            knob_type = self.__KNOB_TYPES.get(knob.Class(), str)
+
+            # Check if knob has an array
+            if not hasattr(knob, "arraySize"):
+                knob.setValut(knob_type(self.value))
+                continue
+
+            array = knob.arraySize()
+            value = [knob_type(v) for v in self.__PATTERN.findall(self.value)]
+
+            # If the Array is one then use the default value and not the
+            # list of values from the rege
+            if array == 1:
+                value = knob_type(self.value)
+
+            # If we entered one value but the knob required for than one array
+            elif len(value) != array and len(value) == 1:
+                value = [knob_type(self.value)] * array
+
+            elif array != len(value):
+                raise TypeError("Array doesnt match! Expected array length of {}, {} provided!".format(array, len(value)))
+
+            knob.setValue(value)
+
+        return True
+
+    def prepare_values(self):
+        """
+        From the user class, knob and value parameters, loop through all
+        nodes based of class selected then set the knob value.
+
+        Returns:
+            True if successful, False otherwise
+        """
+        # Validate inputs
         if not all([self.class_name in self.classes, self.knob_name in self.knobs]):
             msg = "Please select valid class and knob!"
             QtWidgets.QMessageBox(self, text=msg, icon=QtWidgets.QMessageBox.Warning).exec_()
@@ -242,36 +324,27 @@ class GatherAndSet(QtWidgets.QDialog):
             QtWidgets.QMessageBox(self, text=msg, icon=QtWidgets.QMessageBox.Warning).exec_()
 
         try:
-            for node in nuke.allNodes(self.class_name):
-                knob = node.knob(self.knob_name)
-                knob_type = self.__KNOB_TYPES.get(knob.Class(), str)
-                # Check the about of array
-                print knob
-                if hasattr(knob, "arraySize"):
-                    array = knob.arraySize()
-                    value = self.__PATTERN.findall(self.value)
-
-                    if array == 1:
-                        value = knob_type(self.value)
-                    elif len(value) != array and len(value) == 1:
-                        value = [self.value] * array
-                    elif array != len(value):
-                        raise TypeError("Array doesnt match! Expected array length of {}, {} provided!".format(
-                            array, len(value)))
-                else:
-                    value = knob_type(self.value)
-
-                node.knob(self.knob_name).setValue(value)
-
+            self._update_knob_value()
         except Exception as e:
-            import logging
-            logging.exception("")
             QtWidgets.QMessageBox(self, text=e.message.title(), icon=QtWidgets.QMessageBox.Information).exec_()
+            return False
+
+        return True
 
 
 def run_in_nuke():
+    """
+    Run in nuke, if the ui is open close it and open a new instance.
+    """
+    for entry in  QtWidgets.QApplication.allWidgets():
+        if type(entry).__name__ == 'GatherAndSet':
+            entry.close()
+
     g = GatherAndSet()
     g.show()
 
     return True
 
+
+if __name__ == '__main__':
+    run_in_nuke()
